@@ -34,14 +34,12 @@
 
             @forelse($students as $student)
         
-                {{-- Contoh Baris Pertama --}}
                 <tr>
                     <td> {{ $student->id }}</td>
                     <td> {{ $student->name }}</td>
                     <td> {{ $student->email }}</td>
                     <td> {{ $student->phone }}</td>
                     <td class="text-end">
-                        {{-- Tombol Actions diubah menjadi link teks sederhana --}}
                         <a href="{{ route('students.show', $student->id) }}" class="action-link text-white me-3">View</a>
                         <a href="{{ route('students.edit', $student->id) }}" class="action-link text-success me-3">Edit</a>
                     <button type="button" class="action-link text-danger border-0 bg-transparent p-0 delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal" data-action="{{ route('students.destroy', $student->id) }}">Delete</button>
@@ -93,15 +91,10 @@
     document.addEventListener('DOMContentLoaded', function () {
         var deleteModal = document.getElementById('deleteModal');
         
-        // Saat modal akan dibuka
+        
         deleteModal.addEventListener('show.bs.modal', function (event) {
-            // Tombol yang diklik
             var button = event.relatedTarget;
-            
-            // Ambil URL dari atribut data-action
             var actionUrl = button.getAttribute('data-action');
-            
-            // Masukkan URL tersebut ke dalam action form di modal
             var form = deleteModal.querySelector('#deleteForm');
             form.action = actionUrl;
         });
@@ -109,39 +102,39 @@
 </script>
 
 <style>
-    /* --- CSS Tabel Minimalis --- */
+    /* --- Tabel --- */
 
-    /* Reset background tabel agar transparan */
+    
     .minimal-table {
         --bs-table-bg: transparent; 
         --bs-table-color: #fff;
     }
 
-    /* Styling Header Tabel (Judul Kolom) */
+   
     .minimal-table thead th {
-        border-bottom: 1px solid #444; /* Garis bawah header agak tebal sedikit */
-        color: #888; /* Warna teks abu-abu */
-        font-size: 0.75rem; /* Ukuran kecil */
-        text-transform: uppercase; /* Huruf kapital semua */
-        letter-spacing: 1px; /* Jarak antar huruf */
+        border-bottom: 1px solid #444; 
+        color: #888; 
+        font-size: 0.75rem; /
+        text-transform: uppercase;
+        letter-spacing: 1px; 
         font-weight: 600;
         padding-bottom: 15px;
     }
 
-    /* Styling Baris Data (Rows) */
+   
     .minimal-table tbody td {
-        border-bottom: 1px solid #333; /* Garis pemisah antar baris sangat tipis/gelap */
-        padding: 20px 0; /* Memberi ruang (whitespace) vertikal agar lega */
+        border-bottom: 1px solid #333; 
+        padding: 20px 0; 
         font-size: 0.95rem;
     }
 
-    /* Efek Hover (Saat mouse di atas baris) */
+    
     .minimal-table tbody tr:hover td {
-        color: #fff; /* Pastikan teks tetap putih */
-        background-color: rgba(255, 255, 255, 0.02); /* Highlight sangat halus */
+        color: #fff; 
+        background-color: rgba(255, 255, 255, 0.02);
     }
 
-    /* Menghilangkan border pada baris terakhir agar rapi */
+    
     .minimal-table tbody tr:last-child td {
         border-bottom: none;
     }
@@ -150,10 +143,10 @@
 
     /* Tombol Add New Student */
     .btn-add-minimal {
-        color: #198754; /* Hijau */
+        color: #198754; 
         border: 1px solid #198754;
         padding: 8px 20px;
-        border-radius: 50px; /* Bentuk Pill (bulat lonjong) */
+        border-radius: 50px; 
         font-size: 0.8rem;
         transition: all 0.3s ease;
     }
@@ -176,9 +169,9 @@
         text-decoration: underline;
     }
 
-    /* Opsional: Membuat backdrop modal lebih gelap/blur */
+  
     .modal-backdrop.show {
-    opacity: 0.8; /* Lebih gelap dari default */
+    opacity: 0.8; 
     background-color: #000;
     }
 </style>
